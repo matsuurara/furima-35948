@@ -22,7 +22,7 @@
 | Culumn              | Type       | Option                         |
 | :------------------ | :--------- | :----------------------------- |
 | name                | string     | null:false                     |
-| text                | text       | null:false                     |
+| info                | text       | null:false                     |
 | price               | integer    | null:false                     |
 | status_id           | integer    | null:false                     |
 | delivery_charger_id | integer    | null:false                     |
@@ -58,7 +58,7 @@
 | :--------------- | :--------- | :----------------------------- |
 | postal_code      | string     | null:false                     |
 | region_id        | integer    | null:false                     |
-| cities           | string     | null:false                     |
+| city             | string     | null:false                     |
 | house_number     | string     | null:false                     |
 | floor            | string     |
 | telephone_number | string     | null:false                     |
