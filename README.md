@@ -2,8 +2,8 @@
 
 | Culumn             | Type   | Option                  |
 | :----------------- | :----- | :---------------------- |
-| nickname           | string | null:false, unique:true |
-| e_mail             | string | null:false              |
+| nickname           | string | null:false              |
+| email              | string | null:false, unique:true |
 | encrypted_password | string | null:false              |
 | last_name          | string | null:false              |
 | first_name         | string | null:false              |
@@ -19,30 +19,30 @@
 
 ## Item
 
-| Culumn              | Type       | Option     |
-| :------------------ | :--------- | :--------- |
-| name                | string     | null:false |
-| text                | text       | null:false |
-| price               | integer    | null:false |
-| status_id           | integer    | null:false |
-| delivery_charger_id | integer    | null:false |
-| delivery_date_id    | integer    | null:false |
-| category_id         | integer    | null:false |
-| region_id           | integer    | null:false |
-| user                | references |
+| Culumn              | Type       | Option                         |
+| :------------------ | :--------- | :----------------------------- |
+| name                | string     | null:false                     |
+| text                | text       | null:false                     |
+| price               | integer    | null:false                     |
+| status_id           | integer    | null:false                     |
+| delivery_charger_id | integer    | null:false                     |
+| delivery_date_id    | integer    | null:false                     |
+| category_id         | integer    | null:false                     |
+| region_id           | integer    | null:false                     |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
 -belongs_to : user
 
--has_many : order
+-has_one : order
 
 ## Order
 
-| Culumn | Type       | Option |
-| :----- | :--------- | :----- |
-| user   | references |
-| item   | references |
+| Culumn | Type       | Option                         |
+| :----- | :--------- | :----------------------------- |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -50,19 +50,19 @@
 
 -belongs_to : item
 
--belongs_to : address
+-has_one : address
 
 ## Address
 
-| Culumn           | Type       | Option     |
-| :--------------- | :--------- | :--------- |
-| postal_code      | integer    | null:false |
-| region_id        | integer    | null:false |
-| cities           | string     | null:false |
-| house_number     | string     | null:false |
+| Culumn           | Type       | Option                         |
+| :--------------- | :--------- | :----------------------------- |
+| postal_code      | integer    | null:false                     |
+| region_id        | integer    | null:false                     |
+| cities           | string     | null:false                     |
+| house_number     | string     | null:false                     |
 | floor            | string     |
-| telephone_number | integer    | null:false |
-| order            | references |
+| telephone_number | string     | null:false                     |
+| order            | references | null: false, foreign_key: true |
 
 ### Association
 
