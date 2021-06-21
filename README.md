@@ -56,7 +56,7 @@
 
 | Culumn           | Type       | Option                         |
 | :--------------- | :--------- | :----------------------------- |
-| postal_code      | integer    | null:false                     |
+| postal_code      | string     | null:false                     |
 | region_id        | integer    | null:false                     |
 | cities           | string     | null:false                     |
 | house_number     | string     | null:false                     |
