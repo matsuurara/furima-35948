@@ -75,6 +75,13 @@ RSpec.describe User, type: :model do
 
       end
 
+      it "passwordが全角では登録できない" do
+        @user.password = 'ａａａ１１１'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
+
       it "passwordとpassword_confirmationが一致していなければ登録できない" do
         @user.password = 'bbb111'
         @user.password_confirmation = 'aaa111'
