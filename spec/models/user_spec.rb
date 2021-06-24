@@ -19,9 +19,6 @@ RSpec.describe User, type: :model do
       end
 
 
-
-
-
     end
 
     context "ユーザー登録ができない場合" do
