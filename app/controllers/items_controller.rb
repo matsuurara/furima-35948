@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: :new
 
   def index
   end
@@ -8,6 +7,9 @@ class ItemsController < ApplicationController
   end
 
   def new
+    unless user_signed_in?
+      render template: "devise/sessions/new"
+    end
     @item = Item.new
   end
 
@@ -34,12 +36,6 @@ class ItemsController < ApplicationController
       :region_id,
       :image
     ).merge(user_id: current_user.id)
-  end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
   end
 
 end

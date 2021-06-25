@@ -4,9 +4,10 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :info
-    validates :price
     validates :user
+    validates :price, numericality: { less_than_or_equal_to: 999999, greater_than_or_equal_to: 300 }
   end
+
 
   with_options numericality: { other_than: 1 } do
     validates :status_id
