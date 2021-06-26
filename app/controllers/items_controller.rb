@@ -1,15 +1,13 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
   end
 
-  def show
-  end
+  # def show
+  # end
 
   def new
-    unless user_signed_in?
-      render template: "devise/sessions/new"
-    end
     @item = Item.new
   end
 
@@ -18,12 +16,12 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render new_item_path
+      render :new
     end
   end
 
-
   private
+
   def items_params
     params.require(:item).permit(
       :name,
@@ -37,5 +35,4 @@ class ItemsController < ApplicationController
       :image
     ).merge(user_id: current_user.id)
   end
-
 end

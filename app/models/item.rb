@@ -2,12 +2,11 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   with_options presence: true do
-    validates :name,length: { maximum: 40 }
+    validates :name, length: { maximum: 40 }
     validates :info
     validates :image
-    validates :price, numericality: { less_than_or_equal_to: 999999, greater_than_or_equal_to: 300 }
+    validates :price, numericality: { less_than_or_equal_to: 999_999, greater_than_or_equal_to: 300 }
   end
-
 
   with_options numericality: { other_than: 1 } do
     validates :status_id
@@ -17,7 +16,6 @@ class Item < ApplicationRecord
     validates :region_id
   end
 
-
   belongs_to :user
   belongs_to :status
   belongs_to :category
@@ -25,6 +23,4 @@ class Item < ApplicationRecord
   belongs_to :delivery_charger
   belongs_to :region
   has_one_attached :image
-
-
 end
