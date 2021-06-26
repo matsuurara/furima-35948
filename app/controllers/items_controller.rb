@@ -1,12 +1,14 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_item, only: [:show]
 
   def index
     @items = Item.order('created_at DESC')
   end
 
-  # def show
-  # end
+  def show
+
+  end
 
   def new
     @item = Item.new
@@ -35,5 +37,9 @@ class ItemsController < ApplicationController
       :region_id,
       :image
     ).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
