@@ -23,4 +23,5 @@ class Item < ApplicationRecord
   belongs_to :delivery_charger
   belongs_to :region
   has_one_attached :image
+  has_one :order
 end
