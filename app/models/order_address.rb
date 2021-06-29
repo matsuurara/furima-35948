@@ -10,6 +10,7 @@ class OrderAddress
     validates :city
     validates :house_number
     validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: {minimum: 10,maximum:11 }
+    validates :token
   end
 
   def save
