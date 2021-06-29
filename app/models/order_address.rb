@@ -4,11 +4,11 @@ class OrderAddress
   attr_accessor :postal_code,:region_id,:city,:house_number,:floor,:telephone_number,:user_id,:item_id
 
   with_options presence: true do
-    validates :postal_code
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/}
     validates :region_id, numericality: { other_than: 1 }
     validates :city
     validates :house_number
-    validates :telephone_number
+    validates :telephone_number, format: { with: /\A[0-9]+\z/ }, length: {minimum: 10,maximum:11 }
   end
 
   def save
