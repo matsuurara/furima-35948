@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   describe 'オーダーの住所登録' do
     before do
-      @user = FactoryBot.create(:user)
-      @item = FactoryBot.build(:item)
-      @order_address = FactoryBot.build(:order_address, user_id: @user.id, item_id: @item.id)
+      @item = FactoryBot.create(:item)
+      @order_address = FactoryBot.build(:order_address, user_id: @item.user.id, item_id: @item.id)
     end
 
     context '注文登録できる場合' do
