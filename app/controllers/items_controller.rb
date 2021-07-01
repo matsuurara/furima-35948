@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :ordered, only: [:edit, :update]
 
   def index
-    @items = Item.order('created_at DESC')
+    @items = Item.includes(:user).order('created_at DESC')
   end
 
   def show
