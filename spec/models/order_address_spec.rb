@@ -75,11 +75,33 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Telephone number is too long (maximum is 11 characters)')
       end
+      it 'telephone_numberが半角数字のみでないと登録できない' do
+        @order_address.telephone_number = '123asdf1234'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid')
+      end
+      it 'telephone_numberが全角数字では登録できない' do
+        @order_address.telephone_number = '１２３４５６７８９０１２'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid')
+      end
 
       it 'tokenが空では登録できない' do
         @order_address.token = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空では登録できない' do
+        @order_address.user_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空では登録できない' do
+        @order_address.item_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
