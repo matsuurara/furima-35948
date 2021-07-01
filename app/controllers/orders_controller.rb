@@ -22,7 +22,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    @item = Item.find(params[:id])
     params.require(:order_address).permit(
       :postal_code,
       :region_id,
